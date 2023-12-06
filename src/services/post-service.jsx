@@ -9,6 +9,11 @@ export const createPost=(postData)=>{
                           .then(response => response.data)
 }
 
+export const loadDonateMoneyAPI=()=>
+{
+    return myAxios.get(`/payment/alldonations`).then(response => response.data)
+
+}
 
 export const loadAllPosts=(pageNo , pageSize)=>
 {

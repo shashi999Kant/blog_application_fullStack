@@ -17,6 +17,7 @@ import UserProvider from "./context/UserProvider";
 import Category from "./pages/Category";
 import UpdateBlog from "./pages/UpdateBlog";
 import CreateCategory from "./components/CreateCategory";
+import DonationComponent from "./services/DonationComponent";
 
 export default function App() {
 
@@ -40,12 +41,12 @@ export default function App() {
         <Route path="/posts/:postId" element={<PostPage />} />
         <Route path="/categories/:categoryId" element={<Category />} />
 
-        <Route path="/user" element={<PrivateRoute />}>
+        <Route path="/user" element={<PrivateRoute />}> 
          <Route path="dashboard" element={<UserDashBoard />} />
          <Route path="profile-info/:userId" element={<ProfileInfo />} />
          <Route path="update-blog/:blogId" element={<UpdateBlog />} />
          <Route path="createCategory" element={<CreateCategory />} />
-
+         <Route path="donation" element={<DonationComponent />} />
         </Route>
 
 

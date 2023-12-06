@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 import { doLogOut, getCurrentUserDetails, isLoggedIn } from '../auth';
 import UserContext from '../context/userContext';
+import { loadDonateMoneyAPI } from '../services/post-service';
 
 
 export default function CustomNavbar() {
@@ -28,10 +29,13 @@ export default function CustomNavbar() {
   const [login, setLogin] = useState(false)
   const [user, setUser] = useState(undefined)
 
+  const [donateUser , setDonateUsers]=useState(0)
+
   useEffect(() => {
 
     setLogin(isLoggedIn())
     setUser(getCurrentUserDetails())
+    loadDonateMoney()
 
   }, [login])
 
@@ -45,6 +49,12 @@ export default function CustomNavbar() {
       })
       navigate("/")
     })
+  }
+
+  const loadDonateMoney=()=>{
+      loadDonateMoneyAPI().then(data => {
+        setDonateUsers(data)
+      })
   }
 
 
@@ -109,6 +119,12 @@ export default function CustomNavbar() {
                   <NavItem>
                     <NavLink  tag={ReactLink} to={`/user/profile-info/${user.id}`}>
                       {user.name}
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem>
+                    <NavLink  tag={ReactLink} to={`/user/donation`}>
+                      Donation ({donateUser})
                     </NavLink>
                   </NavItem>
                 </>
