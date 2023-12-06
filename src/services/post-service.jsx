@@ -20,6 +20,11 @@ export const loadAllPosts=(pageNo , pageSize)=>
     return myAxios.get(`/posts?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=addedDate&sortDir=desc`).then(response => response.data)
 }
 
+export const loadSearchedPosts=(titleSearch,pageNo , pageSize)=>
+{
+    return myAxios.get(`/posts/search/${titleSearch}?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=addedDate&sortDir=desc`).then(response => response.data)
+}
+
 //load single post of given id
 export const loadPost=(postId)=>{
     return myAxios.get("/posts/"+postId).then((response) => response.data
